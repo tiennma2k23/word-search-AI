@@ -1,4 +1,4 @@
-# final-project-INT2208
+# Word Search Game using AI
 ### Danh sách thành viên
 1. Phạm Thị Kim Huệ - 22022540
 2. Dương Thị Thu Thảo - 22022638
