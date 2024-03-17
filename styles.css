@@ -1,8 +1,135 @@
+/* theme color:
+FFE5EC
+FF8FAB
+*/
+@media (prefers-reduced-motion: no-preference) {
+    * {
+      scroll-behavior: smooth;
+    }
+}
+
 html {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    padding: none;
+    margin: 0;
+}
+
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+}
+
+header {
+    background-color: #FEA3AA;
+    width: 103%;
+    height: 65px;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    top: -10px;
+    left: -10px;
+}
+
+#logo {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    top: -60px;
+    left: -71px;
 }
 
 #navbar {
-    display: inline-flex;
-    justify-items: center;   
+    list-style-type: none;
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    top: -200px;
+}
+
+/* :hover selector to select element when u mouse over them */
+nav > ul > li > a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+nav > ul > li > a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+#intro {
+    text-align: center;
+    position: relative;
+    top: -10px;
+    font-size: 23px;
+}
+
+.intro > p {
+    width: 70%;
+    position: relative;
+    top: -10px;
+    text-align: justify;
+    justify-items: center;
+    line-height: 25px;
+    margin: auto;
+}
+
+#eg {
+    max-width: 50%;
+    display: block;
+    margin: auto;
+    filter: drop-shadow(#EBEBEB 1rem 1rem 10px)
+}
+
+.start {
+    display: flex;
+    position: relative;
+    gap: 20px;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.benefits > ul, .guide > ul {
+    list-style-type: \1F44D;
+}
+
+.start > .guide > ul > li, .benefits > ul > li {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+
+#bold {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.try {
+    display: flex;
+    justify-content: center;
+}
+
+button[type="button"] {
+    border-radius: 25px;
+    border: none;
+    margin-top: 40px;
+    background-color: #FEA3AA;
+}
+
+button[type="button"] > a {
+    text-decoration: none;
+    color: #000;
+}
+
+button[type="button"] > a:hover {
+    cursor: pointer;
+    color: white;
 }
