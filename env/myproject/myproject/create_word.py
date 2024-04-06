@@ -3,7 +3,7 @@ from openai import Client
 # from openai import OpenAI
 
 # client = Client(api_key=os.getenv('OPENAI_API_KEY'))
-client = Client(api_key="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")
+client = Client(api_key="sk-" )
 
 def generate_related_words(course_name, lesson_name, grade):
     # Combine inputs into a prompt for the API
