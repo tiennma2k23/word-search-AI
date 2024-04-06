@@ -21,10 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-a%u1v00u@y6j1i9^1vfgl22#g38)w^gk)6ma^8^q$)%4q9a!_w'
-# user: admin
-# email: 22022656@vnu.edu.vn
-# password: uet@#vnu
-# postgreSQL password: uet@#vnu
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
