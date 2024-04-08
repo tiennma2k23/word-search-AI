@@ -1,5 +1,5 @@
-from create_puzzle import *
-from create_word import *
+from myproject.create_puzzle import *
+from myproject.create_word import *
 import fpdf
 
 size = 16
@@ -23,4 +23,4 @@ def convert_2_pdf(course, lesson, grade):
         pdf.ln()
 
     pdf.output("testing.pdf")
-    
+

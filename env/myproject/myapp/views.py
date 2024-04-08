@@ -4,14 +4,13 @@ from django.contrib import messages
 from django.http import HttpResponse
 from .models import Feature
 from myproject.main import *
-# from myproject.myproject.main import *
+
 
 # Create your views here.
-
 # gửi request tới thư mục templates để tìm file index.html
 def index(request):
     # dictionary 
-    return render(request, 'wordsearch.html')
+    return render(request, 'login.html')
 
 
 # log in and sign up function
@@ -54,7 +53,7 @@ def login(request):
         # check if user is register or not
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect('wordsearch')
         else:
             messages.info(request, 'Credentials Invalid')
             return redirect(request, 'login.html')
@@ -70,6 +69,8 @@ def logout(request):
 def post(request, pk):
     return render(request, 'post.html',{'pk':pk})
 
+def wordsearch(request):
+    return render(request, 'wordsearch.html')
 
 def generate(request):
     if request.method == 'POST':
@@ -77,6 +78,6 @@ def generate(request):
         lesson = request.POST['lesson']
         grade = request.POST['grade']
 
-    covert_2_pdf(name, lesson, grade)
+    convert_2_pdf(name, lesson, grade)
     return render(request, 'wordsearch.html')
     

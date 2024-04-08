@@ -87,8 +87,8 @@
                                     <div class style="flex-basis: 40%;">
                                         <div class="flex flex-col gap-4">
                                             <div class="flex flex-col gap-2">
-                                                <form method="POST" action="generate">
-                                                    {% csrf_token %}
+                                                <form method="POST" action="{% url 'generate' %}">
+                                                {% csrf_token %}
                                                 <div class="mb-2">
                                                     <div class>
                                                         <div class="mb-2">

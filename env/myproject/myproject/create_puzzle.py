@@ -1,7 +1,7 @@
 import random
 import os
 from math import sqrt
-from create_word import *
+from myproject.create_word import *
 import string
 
 HORIZONTAL = 0
