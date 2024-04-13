@@ -23,4 +23,3 @@ def convert_2_pdf(course, lesson, grade):
         pdf.ln()
 
     pdf.output("testing.pdf")
-

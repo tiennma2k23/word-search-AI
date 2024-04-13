@@ -2,9 +2,9 @@ import os
 from openai import Client
 # from openai import OpenAI
 
-# client = Client(api_key=os.getenv('OPENAI_API_KEY'))
-client = Client(api_key="sk-" )
-
+API_KEY = os.environ.get('API_KEY')
+client = Client(api_key=API_KEY)
+ 
 def generate_related_words(course_name, lesson_name, grade):
     # Combine inputs into a prompt for the API
     prompt = f"The course is about {course_name}. The lesson is {lesson_name}. The grade is {grade}. Generate ten new single words with length not over 16 characters related to this context:"
