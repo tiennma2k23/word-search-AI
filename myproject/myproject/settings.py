@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-import pymongo
-import pymongo.client_options
-import urllib.parse
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,24 +76,13 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     # 'NAME': BASE_DIR / 'db.sqlite3',
-    #     'NAME':  'word_search',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'uet@#vnu',
-    #     'HOST': 'localhost'
-    # }
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'Cluster0',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb+srv://wordsearch:wordsearch@cluster0.clphgsl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-            'port': 8000,
-            'authSource': 'admin',
-            # 'authMechanism': 'SCRAM-SHA-1',
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':  'word_search',
+        'USER': 'postgres',
+        'PASSWORD': 'uet@#vnu',
+        'HOST': 'localhost'
+        # 'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
 
