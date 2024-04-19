@@ -20,24 +20,20 @@ def register(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        password2 = request.POST['password2']
 
-        if password == password2:   
-            # check if email already exist in database
-            if User.objects.filter(email = email).exists():
-                messages.info(request, 'Email Already Used')
-                return redirect('register')
-            # check if username alread exist in database
-            elif User.objects.filter(username = username).exists():
-                messages.info(request, 'Username Already Used')
-                return redirect('register')
-            # info valid -> create user
-            else:
-                user = User.objects.create_user(username=username, email=email, password=password)
-                return redirect('login')
-        else:
-            messages.info(request, 'Password is not the same')
+
+        # check if email already exist in database
+        if User.objects.filter(email = email).exists():
+            messages.info(request, 'Email Already Used')
             return redirect('register')
+        # check if username alread exist in database
+        elif User.objects.filter(username = username).exists():
+            messages.info(request, 'Username Already Used')
+            return redirect('register')
+        # info valid -> create user
+        else:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            return redirect('login')
     else: 
         return render(request, 'register.html')
     
