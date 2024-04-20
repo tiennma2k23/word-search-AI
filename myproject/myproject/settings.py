@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':  'word_search',
         'USER': 'postgres',
-        'PASSWORD': '131003',
+        'PASSWORD': 'uet@#vnu',
         'HOST': 'localhost'
         # 'NAME': BASE_DIR / 'db.sqlite3'
     }
