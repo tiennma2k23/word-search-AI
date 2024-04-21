@@ -1,15 +1,16 @@
+from reportlab.pdfgen import canvas
 from django.shortcuts import render, redirect # redirect: chuyen huong user toi page khac
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from django.http import HttpResponse
-from myproject.main import *
-
+from django.http import HttpResponse, FileResponse
+from myproject.createPuzzle import *
+import io
 
 # Create your views here.
 # gửi request tới thư mục templates để tìm file index.html
 def index(request):
     # dictionary 
-    return render(request, 'login.html')
+    return render(request, 'cover.html')
 
 
 # sign up function
@@ -68,5 +69,20 @@ def generate(request):
         lesson = request.POST['lesson']
         grade = request.POST['grade']
     createPuzzle(name, lesson, grade)
-    return render(request, 'wordsearch.html')
+    return FileRespone()
 
+def some_view(request):
+    # Create a file-like buffer to receive PDF data.
+    buffer = io.BytesIO()
+    # Create the PDF object, using the buffer as its "file."
+    p = canvas.Canvas(buffer)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    p.drawString(100, 100, "Hello world.")
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
