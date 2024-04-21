@@ -9,7 +9,7 @@ import io
 # Create your views here.
 # gửi request tới thư mục templates để tìm file index.html
 def index(request):
-    # dictionary 
+    # dictionary
     return render(request, 'cover.html')
 
 
@@ -17,9 +17,9 @@ def index(request):
 def register(request):  
     # check if the page is rendered with a post method
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
+        username = request.POST.get('username', None)
+        email = request.POST.get('email', None)
+        password = request.POST.get('password', None)
 
         # check if email already exist in database
         if User.objects.filter(email = email).exists():

@@ -52,14 +52,22 @@
 
         <div class="button-parent">
           <div class="button-group">
-            <button class="button">
-              <div class="before1"></div>
-              <div class="sign-up">Sign Up</div>
-            </button>
-            <button class="link">
-              <div class="before2"></div>
-              <div class="log-in">Log in</div>
-            </button>
+            <form action="{% url 'register' %}" method="GET">
+              {% csrf_token %}
+              <button class="button">
+                <div class="before1"></div>
+                <div class="sign-up">Sign Up</div>
+              </button>
+            </form>
+            <form action="{% url 'login' %}" method="GET">
+              {% csrf_token %}
+              <button class="link">
+                <div class="before2"></div>
+                <div class="log-in">Log in</div>
+              </button>
+            </form>
+              </div>
+              </div>
           </div>
         </div>
       </header>
