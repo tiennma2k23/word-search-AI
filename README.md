@@ -17,7 +17,7 @@ https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 https://www.pgadmin.org/download/
 \
 Sau khi cài đặt hai phần mềm trên:
-+ Vào pgAdmin4, tạo database tên word_search
+Vào pgAdmin4, tạo database tên word_search
 \
 3.Cách chạy:
 ```
