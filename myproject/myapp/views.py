@@ -70,3 +70,11 @@ def generate(request):
     createPuzzle(name, lesson, grade)
     return render(request, 'wordsearch.html')
 
+def guide(request):
+    return render(request, 'guide.html')
+
+def about_us(request):
+    return render(request, 'about_us.html')
+
+def home(request):
+    return render(request, 'wordsearch.html')

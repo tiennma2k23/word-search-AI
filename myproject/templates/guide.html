@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static '/media/favicon.ico' %}">
+    
+    <style>
+        body {
+        background-color: #F8F7FE;
+        font-family:  "Baloo Da 2", sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+
+        .head {
+        left: 2%;
+        top: 2%;
+        position: fixed;
+        z-index: 1000;
+        }
+
+        .dropdown {
+        position: absolute;
+        left: 2%;
+        top: 30%;
+        display: inline-block;
+        }
+        
+        .dropbtn {
+        background-color: #7B68EE;
+        color: white;
+        font-size: 16px;
+        border-radius: 2px;
+        border: none;
+        }
+        
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        }
+        
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #f1f1f1;}
+        
+        .dropdown:hover .dropdown-content {display: block;}
+        
+        .dropdown:hover .dropbtn {background-color: #a396eb;}
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 30vh;
+            
+        }
+
+        h2 {
+            margin: 0;
+            text-align: center;
+            font: 600 53px/134% Baloo Da 2, sans-serif;
+            font-size: 40px;
+            color: #7B68EE;
+        }
+
+
+        .content1 {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            
+        }
+
+        .content2 {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            
+        }
+
+        .content3 {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 60%;
+            left:10%;
+        }
+
+        .content4 {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 60%;
+            right: 10%;
+            
+        }
+
+        .content5 {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 110%;
+            left: 40%;
+            
+        }
+        .square {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        .p-title{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .text {
+            font-size: 18px;
+        }
+
+        .dropdown {
+            top: 0;
+            left: 0;
+            position: absolute;
+            left: 2%;
+            top: 30%;
+            display: inline-block;
+        }
+        
+        .dropbtn {
+        background-color: #7B68EE;
+        color: white;
+        font-size: 16px;
+        border-radius: 2px;
+        border: none;
+        }
+        
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        }
+        
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #f1f1f1;}
+        
+        .dropdown:hover .dropdown-content {display: block;}
+        
+        .dropdown:hover .dropbtn {background-color: #a396eb;}
+
+       @media (max-width: 1100px) {
+        .content1 {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .content2 {
+            left: 50%;
+            top:60%;
+            transform: translateX(-50%);
+        }
+        .content3 {
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+        }
+        .content4 {
+            left: 50%;
+            top: 145%;
+            transform: translateX(-50%);
+        }
+
+        .content5 {
+            top: 181%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+       }
+
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <div class="dropdown">
+            <button class="dropbtn">&#9776;</button>
+            <div class="dropdown-content">
+                <a href="home">Home</a>
+                <a href="guide">Guide to use</a>
+                <a href="about_us">About us</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <main>
+        <h2 class="guide-title">Guide to use</h2>
+        <div class="content">
+            <div class="content1">
+                <div class="square"></div>
+                <p class="p-title">Interactive Learning with AI</p>
+                <p class="text">Discover the power of AI in education with Almanack's Word Search game. Utilizing advanced AI algorithms, this tool offers a unique, interactive way to engage students in the classroom, making learning both fun and effective.</p>
+            </div>
+            <div class="content2">
+                <div class="square"></div>
+                <p class="p-title">Tailored Educational Content</p>
+                <p class="text">Easily integrate your lesson plans into our Word Search game. The AI-driven content adaptation ensures each game is perfectly aligned with your educational objectives, providing a personalized learning experience for each student.</p>
+            </div>
+            <div class="content3">
+                <div class="square"></div>
+                <p class="p-title">Features and Benefits</p>
+                <p class="text">AI-enhanced word search puzzles for engaging classroom activities
+                    Customizable to fit any K-12 lesson plan
+                    Improves vocabulary and spelling in an interactive format
+                    Supports a variety of learning styles with adaptive AI technology
+                    Easy-to-use interface, designed specifically for educators</p>
+            </div>
+            <div class="content4">
+                <div class="square"></div>
+                <p class="p-title">How It Works</p>
+                <p class="text">Select your lesson's key concepts and objectives.
+                    Let the AI generate a tailored word search puzzle.
+                    Integrate the game into your teaching session for enhanced engagement.</p>
+            </div>
+            <div class="content5">
+                <div class="square"></div>
+                <p class="p-title">Join the Future of Education</p>
+                <p class="text">Be part of the innovative wave of AI in education with Almanack's Word Search game. Enhance your teaching methods, engage your students more effectively, and witness the transformation in your classroom.</p>
+            </div>
+        </div>
+    </main>
+</body>

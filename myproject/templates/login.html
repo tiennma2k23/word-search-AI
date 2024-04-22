@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static '/media/favicon.ico' %}">
 
     <style>
         body {
@@ -18,13 +19,13 @@
         }
 
         .head {
-        width: 100%;
-        height: 60px;
-        left: 0px;
-        top: 0px;
-        position: absolute;
-        background: #ffffff;
-        border-top: 1px rgb(179, 177, 177) solid;
+            width: 100%;
+            height: 60px;
+            left: 0px;
+            top: 0px;
+            position: fixed;
+            background: #ffffff;
+            border-top: 1px rgb(179, 177, 177) solid;
         }
 
         h1 {
@@ -42,12 +43,12 @@
             background-color: #F5EEFC;
             border-radius: 30px;
             position: absolute;
-            /* margin: 150px auto; */
             top: 150px;
-            left: 37.5%;
+            left: 50%; 
+            transform: translateX(-50%); 
             display: flex;
-            flex-direction: column; /* Hiển thị các phần tử theo chiều dọc */
-            justify-content: space-evenly; /* Căn giữa các phần tử theo chiều dọc và chia đều khoảng cách giữa chúng */
+            flex-direction: column;
+            justify-content: space-evenly; 
             align-items: center;
             box-shadow: 10px 10px 25px #a396eb;
         }
@@ -56,40 +57,16 @@
         .box .input,
         .box button,
         .box .link {
-            margin: 20px 0; /* Cách nhau 40px (20px trên và 20px dưới) */
+            margin: 20px 0;
         }
 
-        .download {
-            top: 2px;
-            left: 50px;
-            position: absolute;
-            text-align: center;
-            color: #292D34;
-            font-size: 18px;
-            font-family: 'Baloo Da 2';
-            font-weight: 400;
-            line-height: 23px;
-            word-wrap: break-word;
-        }
-
-        .about_us {
-            top: 2.5px;
-            left: 200px;
-            position: absolute;
-            text-align: center;
-            color: #292D34;
-            font-size: 18px;
-            font-family: 'Baloo Da 2';
-            font-weight: 400;
-            line-height: 23px;
-            word-wrap: break-word;
-        }
         .logo {
             width: 250px;
             height: auto;
             position: absolute;
             top:8px;
-            left: 42%;
+            left: 50%; 
+            transform: translateX(-50%);
         }
         .layer {
             background: rgba(255, 255, 255, 0); 
@@ -160,8 +137,6 @@
 <div class="wrapper">
     <div class="head">
         <div style="width: 100%; height: 60px; left: 0px; top: 0px; position: absolute; background: #ffffff00; box-shadow: 0px 10px 25px rgba(184, 53, 210, 0.1)"></div>
-        <p class="download">Download</p> 
-        <p class="about_us">About us</p>
         <img class="logo" src="{% static '/media/logoWS.jpg' %}" alt="logo">
     </div>
 
