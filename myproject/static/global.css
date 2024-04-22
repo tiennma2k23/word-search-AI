@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-baloo-da-2: "Baloo Da 2";
+
+  /* font sizes */
+  --font-size-6xl: 25px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-darkslategray: #292d34;
+  --color-gray-100: rgba(255, 255, 255, 0);
+
+  /* Gaps */
+  --gap-xl: 20px;
+
+  /* Paddings */
+  --padding-sm: 14px;
+
+  /* Border radiuses */
+  --br-4xs: 9px;
+}
