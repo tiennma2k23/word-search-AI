@@ -9,5 +9,8 @@ Nâng cao trải nghiệm học tập của bạn với trò chơi Word Search �
 Cài đặt thư viện: 
 ```pip install -r requirement.txt```
 Cách chạy:
-```cd myproject
-python manage.py runserver```
+\\
+```
+cd myproject
+python manage.py runserver
+```
