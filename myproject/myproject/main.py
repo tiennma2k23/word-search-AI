@@ -9,6 +9,6 @@ def createPuzzle(course, lesson, grade):
     words = generate_related_words(course, lesson, grade)
     puzzle = WordSearch(words)
     # puzzle.show()
-    puzzle.save(path="D:/VSC/word-search-AI/myproject/myproject/puzzle.pdf")
+    puzzle.save(path="D:\word-search-AI\myproject\myproject\puzzle.pdf")
     return puzzle
 
