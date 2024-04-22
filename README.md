@@ -8,7 +8,7 @@ Nâng cao trải nghiệm học tập của bạn với trò chơi Word Search �
 ## Cài đặt
 Cài đặt thư viện: 
 ```pip install -r requirement.txt```
-\\
+\
 Cách chạy:
 ```
 cd myproject
