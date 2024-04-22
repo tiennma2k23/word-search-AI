@@ -20,11 +20,14 @@ Sau khi cài đặt hai phần mềm trên:
 cd myproject
 python manage.py runserver
 ```
+
+## Cách dùng
+Nhập tên môn học, tên bài học và lớp học tương ứng rồi bấm nút Create để tạo ra word search board chứa các từ khóa liên quan đến chủ đề bài học. 
+
 ## Danh sách thành viên
 1. Phạm Thị Kim Huệ - 22022540
 2. Dương Thị Thu Thảo - 22022638
 3. Nguyễn Phương Trang - 22022656
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
