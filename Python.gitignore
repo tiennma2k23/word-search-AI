@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.pyc
-myproject/settings.py
+myproject/myproject/settings.py
 # C extensions
 *.so
 
@@ -62,7 +62,7 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-
+settings.py
 # Flask stuff:
 instance/
 .webassets-cache
