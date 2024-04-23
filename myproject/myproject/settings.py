@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  'postgres',
+        'NAME':  'word_search',
         'USER': 'postgres',
-        'PASSWORD': '131003',
+        'PASSWORD': 'uet@#vnu',
         'HOST': 'localhost'
         # 'NAME': BASE_DIR / 'db.sqlite3'
     }
