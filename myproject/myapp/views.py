@@ -74,7 +74,16 @@ def generate(request):
         # true ans key
     puzzle = createPuzzle(name, lesson, grade, withAns=True)
     # save puzzle in database
+    createPuzzle(name, lesson, grade)
+    return render(request, 'wordsearch.html')
 
+def guide(request):
+    return render(request, 'guide.html')
+
+def about_us(request):
+    return render(request, 'about_us.html')
+
+def home(request):
     return render(request, 'wordsearch.html')
 
 # download function
