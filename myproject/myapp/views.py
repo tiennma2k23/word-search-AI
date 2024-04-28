@@ -3,15 +3,16 @@ from django.shortcuts import render, redirect # redirect: chuyen huong user toi 
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import HttpResponse, FileResponse
-from myproject.createPuzzle import *
+from myproject.create_puzzle import *
+from models.py import *
 import io
 
 # Create your views here.
+
 # gửi request tới thư mục templates để tìm file index.html
 def index(request):
     # dictionary
     return render(request, 'cover.html')
-
 
 # sign up function
 def register(request):  
@@ -32,6 +33,7 @@ def register(request):
         # info valid -> create user
         else:
             user = User.objects.create_user(username=username, email=email, password=password)
+            Profile.objects.create(user=user)
             return redirect('login')
     else: 
         return render(request, 'register.html')
@@ -63,11 +65,15 @@ def logout(request):
 def wordsearch(request):
     return render(request, 'wordsearch.html')
 
+# create function
 def generate(request):
     if request.method == 'POST':
         name = request.POST['name']
         lesson = request.POST['lesson']
         grade = request.POST['grade']
+        # true ans key
+    puzzle = createPuzzle(name, lesson, grade, withAns=True)
+    # save puzzle in database
     createPuzzle(name, lesson, grade)
     return render(request, 'wordsearch.html')
 
@@ -80,6 +86,7 @@ def about_us(request):
 def home(request):
     return render(request, 'wordsearch.html')
 
+# download function
 def some_view(request):
     # Create a file-like buffer to receive PDF data.
     buffer = io.BytesIO()
