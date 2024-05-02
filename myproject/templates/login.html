@@ -16,6 +16,8 @@
             font-family:  "Baloo Da 2", sans-serif;
             margin: 0;
             padding: 0;
+            position: relative;
+            height: 690px;
         }
 
         .head {
@@ -26,6 +28,7 @@
             position: fixed;
             background: #ffffff;
             border-top: 1px rgb(179, 177, 177) solid;
+            z-index: 1000;
         }
 
         h1 {
@@ -52,6 +55,7 @@
             align-items: center;
             box-shadow: 10px 10px 25px #a396eb;
             transform: translateX(-50%);
+            z-index: 1;
         }
 
         .box h1,
@@ -158,6 +162,11 @@
                     <br>
                     <input type="password" name="password" placeholder="Enter your password"/><br>
                 </label>
+                <label>
+                    <div class="eye-icon" onclick="togglePasswordVisibility()">
+                        
+                    </div>
+                </label>                  
             </div>
     
             <button class="button">Submit</button>

@@ -18,6 +18,7 @@
       padding: 0;
       width: 100%;
       height: 950px;
+      position: relative;
     }
 
     .head {
@@ -112,7 +113,7 @@
       width: 350px;
       height: 450px;
       padding-bottom: 10px;
-      top: 40%;
+      top: 315px;
       left: 20%;
       transform: translateX(-20%);
       display: flex;
@@ -209,7 +210,7 @@
       width: 515px;
       height: 617px;
       right: 20%;
-      top: 30%;
+      top: 225px;
       transform: translateX(20%);
       box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.1);
     }
@@ -217,8 +218,7 @@
     .download-button {
       position: absolute;
       right: 25%;
-      top: 125%;
-      margin-bottom: 50px;
+      top: 880px;
       background: #7B68EE; 
       box-shadow: 0px 10px 25px rgba(123, 104, 238, 0.50);
       width: 150px; 
@@ -237,14 +237,13 @@
       background: #a396eb;
     }
 
-    @media (max-width: 1300px) {
-      .subButton,
-      .profile-info {
+    @media (max-width: 1150px) {
+      .subButton {
         display: none;
       }
     }
 
-    @media (min-width: 1300px) {
+    @media (min-width: 1150px) {
       .dropdown {
         display: none !important;
       }
@@ -324,13 +323,33 @@
 
     .dropdown-content-button a:hover {background-color: #f1f1f1;}
 
-    .show {display:block;}
+    .show1 {display:block;}
 
     .line {
       margin: 0;
       padding: 0;
     }
 
+    .dropdown-content-button-create {
+      display: none;
+      text-align: center;
+      background-color: #f9f9f9;
+      width: 200px;
+      min-width: 100px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content-button-create a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content-button-create a:hover {background-color: #f1f1f1;}
+
+    .show2 {display:block;}
   </style>
 </head>
 
@@ -398,8 +417,14 @@
               </label>
             </div>
 
-            <button class="button-create" id="create" type="submit">Create</button>
-            <button class="button-create" id="create-with-answer" type="submit">Create with answer</button>
+            <div class="button">
+              <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button>
+              <div id="dropdownMenuCreate" class="dropdown-content-button-create">
+                  <a class="answer" href="#">Create with answer</a>
+                  <a class="noanswer" href="#">Create with no answer</a>
+              </div>
+            </div>
+            
           </form>
         </div>
         
@@ -409,9 +434,13 @@
 </body>
 
 <script>
+  function toggleDropdownCreate() {
+    var dropdownMenuCreate = document.getElementById("dropdownMenuCreate");
+    dropdownMenuCreate.classList.toggle("show2");
+  }
   function toggleDropdown() {
     var dropdownMenu = document.getElementById("dropdownMenu");
-    dropdownMenu.classList.toggle("show");
+    dropdownMenu.classList.toggle("show1");
   }
   
   // Đóng dropdown menu nếu click ra ngoài
@@ -421,8 +450,18 @@
       var i;
       for (i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+        if (openDropdown.classList.contains('show1')) {
+          openDropdown.classList.remove('show1');
+        }
+      }
+    }
+    if (!event.target.matches('.button-create')) {
+      var dropdownsCreate = document.getElementsByClassName("dropdown-content-button-create");
+      var j;
+      for (j = 0; j < dropdownsCreate.length; j++) {
+        var openDropdownCreate = dropdownsCreate[j];
+        if (openDropdownCreate.classList.contains('show2')) {
+          openDropdownCreate.classList.remove('show2');
         }
       }
     }
