@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import HttpResponse, FileResponse
 from myproject.create_puzzle import *
-from models.py import *
+from myapp.models import *
 import io
 
 # Create your views here.
@@ -21,7 +21,6 @@ def register(request):
         username = request.POST.get('username', None)
         email = request.POST.get('email', None)
         password = request.POST.get('password', None)
-
         # check if email already exist in database
         if User.objects.filter(email = email).exists():
             messages.info(request, 'Email Already Used')
@@ -33,6 +32,7 @@ def register(request):
         # info valid -> create user
         else:
             user = User.objects.create_user(username=username, email=email, password=password)
+            # create user's profile
             Profile.objects.create(user=user)
             return redirect('login')
     else: 

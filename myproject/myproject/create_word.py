@@ -1,35 +1,22 @@
+import pathlib
+import textwrap
 import os
-from openai import Client
-# from openai import OpenAI
+import re
+import google.generativeai as genai
 
-# client = Client(api_key=os.getenv('OPENAI_API_KEY'))
-API_KEY = os.environ.get('API_KEY')
-client = Client(api_key=API_KEY)
+from IPython.display import display
+from IPython.display import Markdown
+
+genai.configure(api_key='AIzaSyAY6Lwr-bZSs26b_F3iwMCB0CrNTblHBvc')
 
 def generate_related_words(course_name, lesson_name, grade):
-    # Combine inputs into a prompt for the API
-    prompt = f"The course is about {course_name}. The lesson is {lesson_name}. The grade is {grade}. Generate ten new single words with length not over 14 characters related to this context:"
-
-    # Use the GPT model to generate text based on the prompt
-    response = client.completions.create(
-        model="gpt-3.5-turbo-instruct",
-        prompt=prompt,
-        max_tokens=50,
-        n=1,
-        stop=None
-    )
-
-    # Extract generated text from the API response
-    generated_text = response.choices[0].text.strip()
-
-    # Extract words from the generated text
-    words = generated_text.split()
-
-    ten_words = [word for word in words if isinstance(word, str) and not any(char.isdigit() for char in word)]
-
-    #new_words = [word.upper() for word in ten_words]
+    model = genai.GenerativeModel('gemini-1.0-pro')
+    response = model.generate_content(f"The course is about {course_name}. The lesson is {lesson_name}. The grade is {grade}. Generate ten new single-word with length not over 14 characters related to this context, remember to emphasize on the fact that these words have to be non compound words:")
+    words = response.text.split('\n')
+    ten_words = [re.sub(r'\d+\.\s*', '', word) for word in words if word]
     new_words = ", ".join(ten_words)
-    
     return new_words
 
+test = generate_related_words('math','plus','5')
 
+print(test)

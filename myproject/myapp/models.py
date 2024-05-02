@@ -14,8 +14,8 @@ class PDFHistory(models.Model):
     # reference to the user model
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pdf_histories')
     # FileField to storage the pdf
-    pdf = models.FileField(upload_to=user_pdf_upload_path)
+    pdf = models.FileField(upload_to='account/users/', blank=True)
     # automatically generate uuid for unique identification
-    uuid = models.UUIDField(default=uuid.uuid4, editable = False, unique = True)
+    # uuid = models.UUIDField(default=uuid.uuid4, editable = False, unique = True)
     # timestamp when this record was created
     create_at = models.DateTimeField(auto_now_add=True)
