@@ -4,8 +4,8 @@ import google.generativeai as genai
 import re
 import os
 
-
-genai.configure(api_key='AIzaSyAY6Lwr-bZSs26b_F3iwMCB0CrNTblHBvc')
+API = os.environ['API_KEY']
+genai.configure(api_key=API)
 
 def generate_related_words(course_name, lesson_name, grade):
     model = genai.GenerativeModel('gemini-1.0-pro')
