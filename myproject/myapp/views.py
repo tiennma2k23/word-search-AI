@@ -1,12 +1,13 @@
-from reportlab.pdfgen import canvas
-from django.shortcuts import render, redirect # redirect: chuyen huong user toi page khac
-from django.contrib.auth.models import User, auth
-from django.contrib import messages
-from django.http import HttpResponse, FileResponse
 from myapp.models import *
-from myproject.word_generator.core.test import WordSearch
+from myproject.word_generator.create_puzzle import createPuzzle
+from django.http import HttpResponse, FileResponse
+from django.contrib.auth.models import User, auth
+from django.shortcuts import render, redirect # redirect: chuyen huong user toi page khac
+from pdf2image import convert_from_path
+from django.contrib import messages
+import datetime
 import io
-
+import os
 # Create your views here.
 
 # gửi request tới thư mục templates để tìm file index.html
@@ -68,14 +69,59 @@ def wordsearch(request):
 # create function
 def generate(request):
     if request.method == 'POST':
-        name = request.POST['name']
+        name = request.POST.get('name')
         lesson = request.POST['lesson']
         grade = request.POST['grade']
-        
-        # true ans key
-    puzzle = createPuzzle(name, lesson, grade, withAns=True)
-    # save puzzle in database
-    createPuzzle(name, lesson, grade)
+        # use get to present on standard dicts and is a way to fetch a value 
+        # while providing a default if it does not exist
+        create = request.POST.get('create')
+        puzzle = None
+
+        # Generate a unique filename based on the current timestamp
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")  # e.g., "20231101103045"
+        pdf_filename = f"{timestamp}.pdf"
+
+        # Path of the generated PDF
+        user = request.user
+        username = user.username
+        user_folder = os.path.join('uploads/accounts', username)
+        if not os.path.exists(user_folder):
+            os.makedirs(user_folder, exist_ok=True)
+        path = os.path.join(user_folder, pdf_filename)  # Ensure this path matches your createPuzzle function
+
+        # create puzzle
+        if (create == 'ans'):    
+            puzzle = createPuzzle(name, lesson, grade, ans=True)
+            puzzle.save(path, solution=True)
+        else:
+            puzzle = createPuzzle(name, lesson, grade, ans=False)
+            puzzle.save(path, solution=False)
+
+
+        # convert first page of pdf to image to display on the website
+        pages = convert_from_path(path, first_page=1, last_page=1)
+        img_name = f"{timestamp}.png"
+        account = 'accounts/' + username
+        media_folder = os.path.join(settings.MEDIA_ROOT, account)
+        if not os.path.exists(media_folder):
+            os.makedirs(media_folder, exist_ok=True)
+        # D:\VSC\word-search-AI\myproject\static\media\accounts
+        img_path = os.path.join(media_folder, img_name)
+
+        # save as image
+        if pages:
+            first_page = pages[0]
+            first_page.save(img_path, 'PNG')
+
+        # Save the generated PDF to the model PDFHistory
+        pdf_history = PDFHistory(user=user, pdf=path, image = img_path)
+        pdf_history.save()  
+        return render(request, 'wordsearch.html', {
+            'message': 'Puzzle created and saved successfully!',
+            'image' : img_path, 'media_url':settings.MEDIA_URL,
+            'pdf_filename': pdf_filename,
+        })
+    
     return render(request, 'wordsearch.html')
 
 def guide(request):
@@ -88,19 +134,15 @@ def home(request):
     return render(request, 'wordsearch.html')
 
 # download function
-def download(request):
-    # Create a file-like buffer to receive PDF data.
-    buffer = io.BytesIO()
-    # Create the PDF object, using the buffer as its "file."
-    p = canvas.Canvas(buffer)
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 100, "Hello world.")
-    # Close the PDF object cleanly, and we're done.
-    p.showPage()
-    p.save()
-    # FileResponse sets the Content-Disposition header so that browsers
-    # present the option to save the file.
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+def download(request, pdf_filename):
+    # Construct the path to the PDF file in the media folder
+    user = request.user
+    username = user.username
+    pdf_path = os.path.join('uploads/accounts', username, pdf_filename)
+    
+    # Ensure the file exists before trying to download
+    if not os.path.exists(pdf_path):
+        return HttpResponse("File not found", status=404)
 
+    # Use FileResponse to send the file for download
+    return FileResponse(open(pdf_path, 'rb'), as_attachment=True, filename=pdf_filename)

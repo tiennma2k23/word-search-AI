@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{% static '/media/favicon.ico' %}">
+    <link rel="icon" type="image/x-icon" href="{% static '/favicon.ico' %}">
 
   <style>
     body {
@@ -370,7 +370,7 @@
       </div>
     </div>
 
-    <img class="logo" src="{% static '/media/logoWS.jpg' %}" alt="logo">
+    <img class="logo" src="{% static '/logoWS.jpg' %}" alt="logo">
     <div class="user-profile">
       <div class="profile-info">
         <p class="profile-name">My profile</p>
@@ -393,44 +393,53 @@
         </p>
 
         <div class="box">
-          <form method='generate' action="GET">
+          <form method='POST' action="generate">
+            {% csrf_token %}
             <h2 class="form-title">What lesson is this for ?</h2>
 
             <div class="input">
               <label>Subject
                 <br>
-                <input name='course' type="text" placeholder="e.g. Math">
+                <input name='course' type="text" placeholder="e.g. Math" required>
               </label>
             </div>
 
             <div class="input">
               <label>Lesson name
                 <br>
-                <input name='lesson' type="text" placeholder="e.g. Pytago">
+                <input name='lesson' type="text" placeholder="e.g. Pytago" required>
               </label>
             </div>
 
             <div class="input">
               <label>Grade level
                 <br>
-                <input name='grade' type="text" placeholder="e.g. Grade 9">
+                <input name='grade' type="text" placeholder="e.g. Grade 9" required>
               </label>
             </div>
   
             <div class="button">
               <select name="create" id="dropdownMenuCreate" class="dropdownMenuCreate">
-                <option value="" class="answer">Create with answer</option>
-                <option value="" class="noanswer">Create with no answer</option>
+                <option value="ans" class="answer">Create with answer</option>
+                <option value="noans" class="noanswer">Create with no answer</option>
               </select>
             </div>
             <!-- <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button> -->
             <input type="submit" class="button" id="create"/>
           </form>
         </div>
-        
-        <form method='' action=''>
-          <img class="img" src="{% static '/media/imageWS.jpg' %}" alt="logo">
-          <button class="download-button">Download PDF</button>
+        {% if image %}
+          <img class="img" src="{{media_url}}{{image}}" alt="logo">
+        {% else %}
+          <img class="img" src="{% static '/imageWS.jpg' %}" alt="logo">
+        {% endif %}
+        {% if pdf_filename %}
+          <form method="get" action="{% url 'download' pdf_filename %}">
+              <button class="download-button" type='submit'>Download PDF</button>
+          </form>
+        {% else %}
+            <p>No downloadable PDF available.</p>  <!-- Informative message for users -->
+        {% endif %}
         </form>
   </div>
 </body>
