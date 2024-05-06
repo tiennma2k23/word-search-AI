@@ -7,7 +7,7 @@ Nâng cao trải nghiệm học tập của bạn với trò chơi Word Search �
 
 ```pip install -r requirement.txt```
 
-2.Cách cài đặt database local postgresql:
+2.Cách cài đặt local database postgresql:
 
 + https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 + https://www.pgadmin.org/download/
