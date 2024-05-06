@@ -393,43 +393,45 @@
         </p>
 
         <div class="box">
-          <form>
+          <form method='generate' action="GET">
             <h2 class="form-title">What lesson is this for ?</h2>
 
             <div class="input">
               <label>Subject
                 <br>
-                <input type="text" placeholder="e.g. Math">
+                <input name='course' type="text" placeholder="e.g. Math">
               </label>
             </div>
 
             <div class="input">
               <label>Lesson name
                 <br>
-                <input type="text" placeholder="e.g. Pytago">
+                <input name='lesson' type="text" placeholder="e.g. Pytago">
               </label>
             </div>
 
             <div class="input">
               <label>Grade level
                 <br>
-                <input type="text" placeholder="e.g. Grade 9">
+                <input name='grade' type="text" placeholder="e.g. Grade 9">
               </label>
             </div>
-
+  
             <div class="button">
-              <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button>
-              <div id="dropdownMenuCreate" class="dropdown-content-button-create">
-                  <a class="answer" href="#">Create with answer</a>
-                  <a class="noanswer" href="#">Create with no answer</a>
-              </div>
+              <select name="create" id="dropdownMenuCreate" class="dropdownMenuCreate">
+                <option value="" class="answer">Create with answer</option>
+                <option value="" class="noanswer">Create with no answer</option>
+              </select>
             </div>
-            
+            <!-- <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button> -->
+            <input type="submit" class="button" id="create"/>
           </form>
         </div>
         
-        <img class="img" src="{% static '/media/imageWS.jpg' %}" alt="logo">
-        <button class="download-button">Download PDF</button>
+        <form method='' action=''>
+          <img class="img" src="{% static '/media/imageWS.jpg' %}" alt="logo">
+          <button class="download-button">Download PDF</button>
+        </form>
   </div>
 </body>
 

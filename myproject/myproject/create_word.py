@@ -1,11 +1,9 @@
-import pathlib
-import textwrap
-import os
-import re
-import google.generativeai as genai
-
 from IPython.display import display
 from IPython.display import Markdown
+import google.generativeai as genai
+import re
+import os
+
 
 genai.configure(api_key='AIzaSyAY6Lwr-bZSs26b_F3iwMCB0CrNTblHBvc')
 

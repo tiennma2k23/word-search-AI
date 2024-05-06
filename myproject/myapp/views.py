@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect # redirect: chuyen huong user toi 
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.http import HttpResponse, FileResponse
-from myproject.create_puzzle import *
 from myapp.models import *
+from myproject.word_generator.core.test import WordSearch
 import io
 
 # Create your views here.
@@ -33,7 +33,7 @@ def register(request):
         else:
             user = User.objects.create_user(username=username, email=email, password=password)
             # create user's profile
-            Profile.objects.create(user=user)
+            
             return redirect('login')
     else: 
         return render(request, 'register.html')
@@ -71,6 +71,7 @@ def generate(request):
         name = request.POST['name']
         lesson = request.POST['lesson']
         grade = request.POST['grade']
+        
         # true ans key
     puzzle = createPuzzle(name, lesson, grade, withAns=True)
     # save puzzle in database
@@ -87,7 +88,7 @@ def home(request):
     return render(request, 'wordsearch.html')
 
 # download function
-def some_view(request):
+def download(request):
     # Create a file-like buffer to receive PDF data.
     buffer = io.BytesIO()
     # Create the PDF object, using the buffer as its "file."

@@ -1,7 +1,16 @@
-from create_word import *
-from word_generator.core.word_search import WordSearch
+from word_search import WordSearch
+from myproject.myproject.create_word import *
 
-# D:\VSC\word-search-AI\myproject\myproject\word-search-generator
+'''
+from create_word import *
+course = 'math'
+lesson = 'plus'
+grade = '5'
+answer = False
+words = generate_related_words(course, lesson, grade)
+puzzle = WordSearch(words)
+puzzle.save("puzzle.pdf", solution=answer)
+'''
 
 # createPuzzle function to generate word search board
 def createPuzzle(course, lesson, grade):
@@ -15,4 +24,4 @@ course = 'math'
 lesson = 'plus'
 grade = '5'
 # test createPuzzle function
-createPuzzle(course, lesson, grade)
+# createPuzzle(course, lesson, grade)
