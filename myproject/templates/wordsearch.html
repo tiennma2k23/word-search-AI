@@ -127,7 +127,6 @@
     }
 
     h2 {
-      background: linear-gradient(45deg, #45C4F9 0%, #7D09FF 50%, #FF0BE5 100%);
       color: #7B68EE; 
       font-size: 25px; 
       font-family: Baloo Da 2; 
@@ -296,61 +295,16 @@
     
     .dropdown:hover .dropbtn {background-color: #a396eb;}
 
-    .button-avatar {
+    .logout {
+      position: absolute;
       right: 2%;
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0);
-      border: none;
+      top: 20%;
     }
 
-    .dropdown-content-button {
-      top:60px;
-      display: none;
-      position: absolute;
-      text-align: center;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 10px;
+    .logo-logout {
+      width: 35px;
+      height: 35px;
     }
-
-    .dropdown-content-button a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content-button a:hover {background-color: #f1f1f1;}
-
-    .show1 {display:block;}
-
-    .line {
-      margin: 0;
-      padding: 0;
-    }
-
-    .dropdown-content-button-create {
-      display: none;
-      text-align: center;
-      background-color: #f9f9f9;
-      width: 200px;
-      min-width: 100px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content-button-create a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content-button-create a:hover {background-color: #f1f1f1;}
-
-    .show2 {display:block;}
   </style>
 </head>
 
@@ -372,19 +326,8 @@
     </div>
 
     <img class="logo" src="{% static '/logoWS.jpg' %}" alt="logo">
-    <div class="user-profile">
-      <div class="profile-info">
-        <p class="profile-name">My profile</p>
-        <label><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a331dba4ad6c084e33d00a24dce5b1dc541d3fc090ca409f5758978e26b38d92?apiKey=f7ab5e5325374ba89ef4bfdcc8a1150e&" alt="User avatar" class="profile-avatar" />
-          <button class="button-avatar" onclick="toggleDropdown()"></button>
-        </label>
-        <div id="dropdownMenu" class="dropdown-content-button">
-          <a class="history" href="#">History</a>
-          <hr class="line">
-          <a class="logout" href="logout">Log out</a>
-        </div>
-      </div>
-    </div>
+    
+    <a class="logout" href="logout"><img class="logo-logout" src="{% static '/exit.png' %}" alt="logo"></a>
 
   </div>
     <div class="wrapper">
@@ -449,10 +392,6 @@
   function toggleDropdownCreate() {
     var dropdownMenuCreate = document.getElementById("dropdownMenuCreate");
     dropdownMenuCreate.classList.toggle("show2");
-  }
-  function toggleDropdown() {
-    var dropdownMenu = document.getElementById("dropdownMenu");
-    dropdownMenu.classList.toggle("show1");
   }
   
   // Đóng dropdown menu nếu click ra ngoài
