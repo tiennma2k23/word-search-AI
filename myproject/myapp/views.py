@@ -8,6 +8,10 @@ from django.contrib import messages
 import datetime
 import io
 import os
+import sys
+
+print(sys.executable)
+
 # Create your views here.
 
 # gửi request tới thư mục templates để tìm file index.html
@@ -91,10 +95,10 @@ def generate(request):
 
         # create puzzle
         if (create == 'ans'):    
-            puzzle = createPuzzle(name, lesson, grade, ans=True)
+            puzzle = createPuzzle(name, lesson, grade, shape, level)
             puzzle.save(path, solution=True)
         else:
-            puzzle = createPuzzle(name, lesson, grade, ans=False)
+            puzzle = createPuzzle(name, lesson, grade, shape, level)
             puzzle.save(path, solution=False)
 
 

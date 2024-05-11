@@ -3,364 +3,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale1.0"> 
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{% static '/favicon.ico' %}">
-
-  <style>
-    body {
-      background-color: #F8F7FE;
-      font-family:  "Baloo Da 2", sans-serif;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 950px;
-      position: relative;
-    }
-
-    .head {
-      width: 100%;
-      height: 60px;
-      left: 0px;
-      top: 0px;
-      position: fixed;
-      background: #ffffff;
-      border-top: 1px rgb(179, 177, 177) solid;
-      z-index: 1000;
-    }
-
-    .button-group {
-      display: inline-block;
-      position: absolute;
-    }
-
-    .subButton {
-      width: 155px;
-      height: 60px;
-      border: none;
-      background: #ffffff;
-    }
-    
-    .subButton a {
-      color: #292D34;
-      font-size: 18px;
-      font-family: 'Baloo Da 2';
-      font-weight: 400;
-      line-height: 23px;
-      word-wrap: break-word;
-      text-decoration: none;
-    }
-
-    .subButton:hover {
-      background-color: #f1f1f1;
-    }
-
-    .logo {
-      width: 250px;
-      height: auto;
-      position: absolute;
-      top:8px;
-      left: 50%; 
-      transform: translateX(-50%);
-    }
-
-    .user-profile {
-      position: absolute;
-      right: 3%;
-    }
-
-    .profile-avatar {
-      margin-top: 10px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-
-    .profile-info {
-      display: flex;
-      align-items: center;
-    }
-    
-    .profile-name {
-      color: #292D34;
-      font-size: 18px;
-      font-family: 'Baloo Da 2';
-      font-weight: 400;
-      line-height: 23px;
-      word-wrap: break-word;
-      margin-right: 5px;
-    }
-
-    .page-title {
-      margin: 0;
-      text-align: center;
-      font: 600 53px/134% Baloo Da 2, sans-serif;
-    }
-
-    .page-description {
-      margin: 0;
-      width: 600px;
-      color: #757575;
-      text-align: center;
-      font-family: Baloo Da 2, sans-serif;
-      line-height: 25px;
-    }
-
-    .box {
-      width: 350px;
-      height: 450px;
-      padding-bottom: 10px;
-      top: 315px;
-      left: 20%;
-      transform: translateX(-20%);
-      display: flex;
-      flex-direction: column; /* Hiển thị các phần tử theo chiều dọc */
-      justify-content: space-evenly; /* Căn giữa các phần tử theo chiều dọc và chia đều khoảng cách giữa chúng */
-      align-items: center;
-      box-shadow: 10px 10px 25px #a396eb;
-      background-color: #F5EEFC;
-      border-radius: 30px;
-      position: absolute;
-    }
-
-    h2 {
-      background: linear-gradient(45deg, #45C4F9 0%, #7D09FF 50%, #FF0BE5 100%);
-      color: #7B68EE; 
-      font-size: 25px; 
-      font-family: Baloo Da 2; 
-      font-weight: bold; 
-      word-wrap: break-word;
-      text-align: center;
-    }
-
-    .box h2,
-    .box .input,
-    .box .button-create,
-    .box .link {
-      margin: 20px 0;
-    }
-
-    .input {
-      color: #292D34; 
-      font-size: 18px; 
-      font-family: Baloo Da 2; 
-      font-weight: 400; 
-      line-height: 25px; 
-      word-wrap: break-word;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .input input {
-      width: 280px;
-      height: 35px;
-      background: white; 
-      box-shadow: 0px 19px 25px rgba(41, 45, 52, 0.04); 
-      border-radius: 9px; 
-      border: 1px #B9BEC7 solid;
-      font-size: 14px;
-      padding-left: 10px;
-    }
-
-    .input ::placeholder {
-      color: #757575; 
-      font-size: 16px; 
-      font-family: Baloo Da 2; 
-      word-wrap: break-word;
-    }
-
-    .button-create {
-      background: #7B68EE; 
-      box-shadow: 0px 10px 25px rgba(123, 104, 238, 0.50); 
-      height: 40px; 
-      border-radius: 9px;
-      text-align: center; 
-      color: white; 
-      font-size: 18px; 
-      font-weight: 700; 
-      line-height: 21px; 
-      word-wrap: break-word;
-      border: none;
-    }
-
-    .button-create:hover {
-      background: #a396eb;
-    }
-
-    #create {
-      width: 100px;
-    }
-    #create-with-answer {
-      width: 200px;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 40vh; /* Adjust according to your layout */
-    }
-
-    .img {
-      position: absolute;
-      width: 515px;
-      height: 617px;
-      right: 20%;
-      top: 225px;
-      transform: translateX(20%);
-      box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .download-button {
-      position: absolute;
-      right: 25%;
-      top: 880px;
-      background: #7B68EE; 
-      box-shadow: 0px 10px 25px rgba(123, 104, 238, 0.50);
-      width: 150px; 
-      height: 40px; 
-      border-radius: 9px;
-      text-align: center; 
-      color: white; 
-      font-size: 18px; 
-      font-weight: 700; 
-      line-height: 21px; 
-      word-wrap: break-word;
-      border: none;
-    }
-
-    .download-button:hover {
-      background: #a396eb;
-    }
-
-    @media (max-width: 1150px) {
-      .subButton {
-        display: none;
-      }
-    }
-
-    @media (min-width: 1150px) {
-      .dropdown {
-        display: none !important;
-      }
-    }
-
-    @media (max-width: 1200px) {
-      .img,
-      .download-button {
-        display: none;
-      }
-      .box {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-
-    .dropdown {
-      position: absolute;
-      left: 2%;
-      top: 30%;
-      display: inline-block;
-    }
-    
-    .dropbtn {
-      background-color: #7B68EE;
-      color: white;
-      font-size: 16px;
-      border-radius: 2px;
-      border: none;
-    }
-    
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-    }
-    
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-    
-    .dropdown-content a:hover {background-color: #f1f1f1;}
-    
-    .dropdown:hover .dropdown-content {display: block;}
-    
-    .dropdown:hover .dropbtn {background-color: #a396eb;}
-
-    .button-avatar {
-      right: 2%;
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0);
-      border: none;
-    }
-
-    .dropdown-content-button {
-      top:60px;
-      display: none;
-      position: absolute;
-      text-align: center;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 10px;
-    }
-
-    .dropdown-content-button a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content-button a:hover {background-color: #f1f1f1;}
-
-    .show1 {display:block;}
-
-    .line {
-      margin: 0;
-      padding: 0;
-    }
-
-    .dropdown-content-button-create {
-      display: none;
-      text-align: center;
-      background-color: #f9f9f9;
-      width: 200px;
-      min-width: 100px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content-button-create a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content-button-create a:hover {background-color: #f1f1f1;}
-
-    .show2 {display:block;}
-  </style>
+    <!-- add version=1 to resolve cache issue -->
+    <link rel="stylesheet" type='text/css' href="{%static '/wordsearch.css' %}?version=1"> 
 </head>
-
 <body>
-  <div class="head">
-    <div style="width: 100%; height: 60px; left: 0px; top: 0px; position: absolute; background: #ffffff00; box-shadow: 0px 10px 25px rgba(184, 53, 210, 0.1)"></div>
-    <div class="button-group" role="group" aria-label="Basic example">
+  <div class="header">
+    <div class="left-button-group" role="group" aria-label="Basic example">
       <button type="button" class="subButton"><a href="home">Home</a></button>
       <button type="button" class="subButton"><a href="guide">Guide to use</a></button>
+    </div>
+    <img class="logo" src="{% static '/logoWS.jpg' %}" alt="logo">
+    <div class="right-button-group" role="group" aria-label="Basic example">
       <button type="button" class="subButton"><a href="about_us">About us</a></button>
+      <button type="button" class="subButton"><a href="logout">Log out</a></button>
     </div>
     <div class="dropdown">
       <button class="dropbtn">&#9776;</button>
@@ -370,82 +31,104 @@
         <a href="about_us">About us</a>
       </div>
     </div>
-
-    <img class="logo" src="{% static '/logoWS.jpg' %}" alt="logo">
-    <div class="user-profile">
-      <div class="profile-info">
-        <p class="profile-name">My profile</p>
-        <label><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a331dba4ad6c084e33d00a24dce5b1dc541d3fc090ca409f5758978e26b38d92?apiKey=f7ab5e5325374ba89ef4bfdcc8a1150e&" alt="User avatar" class="profile-avatar" />
-          <button class="button-avatar" onclick="toggleDropdown()"></button>
-        </label>
-        <div id="dropdownMenu" class="dropdown-content-button">
-          <a class="history" href="#">History</a>
-          <hr class="line">
-          <a class="logout" href="logout">Log out</a>
-        </div>
-      </div>
-    </div>
-
   </div>
-    <div class="wrapper">
-        <h1 class="page-title">AI-Powered Word Search Game</h1>
-        <p class="page-description">
-            This interactive game integrates AI technology to create engaging word search puzzles tailored to your lesson plans, improving vocabulary in a fun way.
-        </p>
+  <div class="head-of-main">
+    <h1 class="page-title">AI-Powered Word Search Game</h1>
+    <p class="page-description">
+        This interactive game integrates AI technology to create engaging word search puzzles tailored to your lesson plans, improving vocabulary in a fun way.
+    </p>
+  </div>
+  <div class="wrapper">
+    <div class="box">
+      <form method='POST' action="generate">
+        {% csrf_token %}
+        <h2 class="form-title">What lesson is this for ?</h2>
+        <div class="input">
+          <div class="input-subject">
+            <label>Subject<br>
+              <input name='course' type="text" placeholder=" e.g. Math" required>
+            </label>
+          </div>
 
-        <div class="box">
-          <form method='POST' action="generate">
-            {% csrf_token %}
-            <h2 class="form-title">What lesson is this for ?</h2>
+          <div class="input-lesson">
+            <label>Lesson name<br>
+              <input name='lesson' type="text" placeholder=" e.g. Pytago" required>
+            </label>
+          </div>
 
-            <div class="input">
-              <label>Subject
-                <br>
-                <input name='course' type="text" placeholder="e.g. Math" required>
+          <div class="input-grade">
+            <label>Grade level<br>
+              <input name='grade' type="text" placeholder=" e.g. Grade 9" required>
+            </label>
+          </div>
+          <!-- shapes: Circle, Club, Dimiond, Donut, Fish, Flower, Heart, Hexagon, Octagon, Pentagon, Spade, Star5, Star6 -->
+          <!-- Star8, Tree, Triangle -->
+          <div class="input-shapes">
+            <label>Shapes</label><br>
+            <select name="shapes" id="dropdownMenuCreate" class="dropdownMenuCreate">
+              <option value="circle" class="shapes">Circle</option>
+              <option value="club" class="shapes">Club</option>
+              <option value="dimiond" class="shapes">Dimiond</option>
+              <option value="donut" class="shapes">Donut</option>
+              <option value="fish" class="shapes">Fish</option>
+              <option value="flower" class="shapes">Flower</option>
+              <option value="heart" class="shapes">Heart</option>
+              <option value="hexagon" class="shapes">Hexagon</option>
+              <option value="octagon" class="shapes">Octagon</option>
+              <option value="pentagon" class="shapes">Pentagon</option>
+              <option value="spade" class="shapes">Spade</option>
+              <option value="star5" class="shapes">Star with 5 edges</option>
+              <option value="star6" class="shapes">Star with 6 edges</option>
+              <option value="star8" class="shapes">Star with 8 edges</option>
+              <option value="tree" class="shapes">Tree</option>
+              <option value="triangle" class="shapes">Triangle</option>
+            </select>
+          </div>
+          <!-- 8 levels -->
+          <div class="input-level">
+            <input type="range" min="1" max = "8" value='1' class="level-bar" id="game-level" name="level-bar" placeholder="e.g. level 1">
+          </div>
+          <!-- <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button> -->
+          <div class="ans-no-ans">
+              <label for="ans">
+                Answer<br>
+                <input type="radio" id="ans" name='create-options'value="Answer">
               </label>
-            </div>
-
-            <div class="input">
-              <label>Lesson name
-                <br>
-                <input name='lesson' type="text" placeholder="e.g. Pytago" required>
+              <label for="no-ans">
+                No Answer<br>
+                <input type="radio" id="no-ans" name='create-options' value="No Answer">
               </label>
-            </div>
-
-            <div class="input">
-              <label>Grade level
-                <br>
-                <input name='grade' type="text" placeholder="e.g. Grade 9" required>
-              </label>
-            </div>
-  
-            <div class="button">
-              <select name="create" id="dropdownMenuCreate" class="dropdownMenuCreate">
-                <option value="ans" class="answer">Create with answer</option>
-                <option value="noans" class="noanswer">Create with no answer</option>
-              </select>
-            </div>
-            <!-- <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button> -->
-            <input type="submit" class="button" id="create"/>
-          </form>
+          </div>
+          <input type="submit" class="button" id="create"/>
         </div>
-        {% if image %}
-          <img class="img" src="{{media_url}}{{image}}" alt="logo">
-        {% else %}
-          <img class="img" src="{% static '/imageWS.jpg' %}" alt="logo">
-        {% endif %}
-        {% if pdf_filename %}
-          <form method="get" action="{% url 'download' pdf_filename %}">
-              <button class="download-button" type='submit'>Download PDF</button>
-          </form>
-        {% else %}
-            <p>No downloadable PDF available.</p>  <!-- Informative message for users -->
-        {% endif %}
+      </form>
+    </div>
+    <div class="image-display">
+      {% if image %}
+        <img class="img" src="{{media_url}}{{image}}" alt="logo">
+      {% else %}
+        <img class="img" src="{% static '/imageWS.jpg' %}" alt="logo">
+      {% endif %}
+      {% if pdf_filename %}
+        <form method="get" action="{% url 'download' pdf_filename %}">
+            <button class="download-button" type='submit'>Download PDF</button>
         </form>
+      {% else %}
+      {% endif %}
+      </form>
+    </div>
   </div>
 </body>
 
 <script>
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = slider.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
   function toggleDropdownCreate() {
     var dropdownMenuCreate = document.getElementById("dropdownMenuCreate");
     dropdownMenuCreate.classList.toggle("show2");
