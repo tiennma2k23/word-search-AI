@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,10 +65,11 @@
           <!-- Star8, Tree, Triangle -->
           <div class="input-shapes">
             <label>Shapes</label><br>
-            <select name="shapes" id="dropdownMenuCreate" class="dropdownMenuCreate">
+            <select name="shape" id="dropdownMenuCreate" class="dropdownMenuCreate">
+              <option value="square" class="shapes">Square</option>
               <option value="circle" class="shapes">Circle</option>
               <option value="club" class="shapes">Club</option>
-              <option value="dimiond" class="shapes">Dimiond</option>
+              <option value="diamond" class="shapes">Dimiond</option>
               <option value="donut" class="shapes">Donut</option>
               <option value="fish" class="shapes">Fish</option>
               <option value="flower" class="shapes">Flower</option>
@@ -84,23 +85,26 @@
               <option value="triangle" class="shapes">Triangle</option>
             </select>
           </div>
+        </div>
           <!-- 8 levels -->
           <div class="input-level">
-            <input type="range" min="1" max = "8" value='1' class="level-bar" id="game-level" name="level-bar" placeholder="e.g. level 1">
+            <label>Level<br>
+              <input type="range" min="1" max = "8" value='1' class="level-bar" id="game-level" name="level-bar" placeholder="e.g. level 1">
+            </label>
           </div>
           <!-- <button type="button" class="button-create" id="create" onclick="toggleDropdownCreate()">Create</button> -->
+          <p style="position: relative; top:-170px">Choose your mode</p>
           <div class="ans-no-ans">
-              <label for="ans">
-                Answer<br>
-                <input type="radio" id="ans" name='create-options'value="Answer">
-              </label>
-              <label for="no-ans">
-                No Answer<br>
-                <input type="radio" id="no-ans" name='create-options' value="No Answer">
-              </label>
+            <label for="ans">
+              <input type="radio" id="ans" name='create-options' value="answer" required>
+              Answer
+            </label>
+            <label for="no-ans">
+              <input type="radio" id="no-ans" name='create-options'value="no-answer" required>
+              No Answer
+            </label>
           </div>
-          <input type="submit" class="button" id="create"/>
-        </div>
+          <input type="submit" class="button" id="create" value='Create'/>
       </form>
     </div>
     <div class="image-display">
@@ -114,21 +118,16 @@
             <button class="download-button" type='submit'>Download PDF</button>
         </form>
       {% else %}
+            <!-- <button class="download-button" type='submit'>Download PDF</button> -->
       {% endif %}
       </form>
     </div>
   </div>
+  
 </body>
 
 <script>
-  var slider = document.getElementById("myRange");
-  var output = document.getElementById("demo");
-  output.innerHTML = slider.value; // Display the default slider value
-
-  // Update the current slider value (each time you drag the slider handle)
-  slider.oninput = function() {
-    output.innerHTML = this.value;
-  }
+  var slider = document.getElementById("game-level");
   function toggleDropdownCreate() {
     var dropdownMenuCreate = document.getElementById("dropdownMenuCreate");
     dropdownMenuCreate.classList.toggle("show2");

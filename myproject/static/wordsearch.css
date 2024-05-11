@@ -117,12 +117,12 @@ body {
     display: block;
 }
 
-@media (min-width: 900px) {    /* Change layout for larger screens */
+@media (min-width: 800px) {    /* Change layout for larger screens */
     .dropdown {
         display: none;   /* Change to horizontal */
     }
 }
-@media (max-width: 900px) {    /* Change layout for larger screens */
+@media (max-width: 800px) {    /* Change layout for larger screens */
     .left-button-group, .right-button-group {
         display: none;   /* Change to horizontal */
     }
@@ -130,6 +130,10 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .download-button {
+        top: 50px;
+        left: 35%;
     }
 }
 
@@ -203,8 +207,6 @@ body {
     height: 400px;
     display: flex;
     flex-direction: column;
-    /* box-shadow: 0px 19px 25px rgba(41, 45, 52, 0.04); */
-    justify-content: space-between;
 }
 
 .input input {
@@ -212,6 +214,7 @@ body {
     border: 0.5px solid grey;
     border-radius: 6px;
     width: 260px;
+    font-family: "Baloo Da 2", sans-serif;
 }
 .input ::placeholder {
     color: #757575; 
@@ -227,20 +230,22 @@ body {
     box-shadow: 0px 19px 25px rgba(41, 45, 52, 0.04);
     border-radius: 9px;
     border: 1px #B9BEC7 solid;
-    font-size: 15px;
+    font-size: 14px;
     padding-left: 10px;
+}
+
+.input-level {
+    position: relative;
+    top: -155px;
 }
 
 .level-bar {
     -webkit-appearance: none;
-    width: 100%;
+    width: 98.5%;
     height: 10px;
     border-radius: 5px;
-    background: #d3d3d3;
+    background: #7B68EE;
     outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
 }
 
 .level-bar:hover {
@@ -250,37 +255,58 @@ body {
 .level-bar::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 23px;
-    height: 24px;
+    width: 29px;
+    height: 30px;
     border: 0;
-    background: url('{% static "/winking.png" %}');
+    background: url('winking.png') no-repeat;
     cursor: pointer;
+    background-size: contain;
 }
 
 .level-bar::-moz-range-thumb {
     width: 23px;
-    height: 25px;
+    height: 24px;
     border: 0;
-    background: url('{% static "/winking.png" %}');
+    background: url('winking.png') no-repeat;
     cursor: pointer;
+    background-size: contain;
 }
 
 .ans-no-ans {
-    display: flex;
+  display: flex;
     position: relative;
+    top: -185px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
 }
 
-input[type='radio'] {
-    size: 10px;
+.ans-no-ans input {
+    width: 16px;
+    height: 15px;
+    position: relative;
+    top: 2px;
+    accent-color: #7B68EE;
 }
 
 #create {
+    top: -175px;
     width: 100px;
-}
-#create-with-answer {
-    width: 200px;
+    position: relative;
+    left: 85px;
+    border-radius: 5px;
+    border: 0.5px solid grey;
+    background: #7B68EE;
+    font-size: 16px;
+    height: 33px;
+    color: white;
 }
 
+#create:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 8px 1px #a396eb;
+    opacity: 0.8;
+}
 .img {
     position: relative;
     width: 515px;
@@ -292,19 +318,19 @@ input[type='radio'] {
 }
 
 .download-button {
-    position: absolute;
-    right: 25%;
-    top: 880px;
-    background: #7B68EE; 
+    position: relative;
+    top: 250px;
+    left: 36%;
+    background: #7B68EE;
     box-shadow: 0px 10px 25px rgba(123, 104, 238, 0.50);
-    width: 150px; 
-    height: 40px; 
+    width: 150px;
+    height: 40px;
     border-radius: 9px;
-    text-align: center; 
-    color: white; 
-    font-size: 18px; 
-    font-weight: 700; 
-    line-height: 21px; 
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
     word-wrap: break-word;
     border: none;
 }
@@ -325,18 +351,6 @@ input[type='radio'] {
     }
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-        padding-left: 20%;
-    }
-}
-
-@media only screen and (max-width: 800px) and (min-width: 600px){
-    body {
-        padding-left: 11%;
-        padding-right: 11%;
-    }
-}
 /* end of wrapper's css */
 
 .show1 {display:block;}
@@ -347,3 +361,4 @@ input[type='radio'] {
 }
 
 .show2 {display:block;}
+

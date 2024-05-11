@@ -78,9 +78,14 @@ def generate(request):
         grade = request.POST['grade']
         # use get to present on standard dicts and is a way to fetch a value 
         # while providing a default if it does not exist
-        create = request.POST.get('create')
+        create = request.POST.get('create-options')
+        shape = request.POST.get('shape')
+        str_level = request.POST.get('level-bar')
         puzzle = None
-
+        print(create)
+        # print(str_level)
+        # print(shape)
+        level = int(str_level)
         # Generate a unique filename based on the current timestamp
         timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")  # e.g., "20231101103045"
         pdf_filename = f"{timestamp}.pdf"
@@ -94,7 +99,7 @@ def generate(request):
         path = os.path.join(user_folder, pdf_filename)  # Ensure this path matches your createPuzzle function
 
         # create puzzle
-        if (create == 'ans'):    
+        if (create == 'answer'):    
             puzzle = createPuzzle(name, lesson, grade, shape, level)
             puzzle.save(path, solution=True)
         else:
@@ -125,7 +130,7 @@ def generate(request):
             'image' : img_path, 'media_url':settings.MEDIA_URL,
             'pdf_filename': pdf_filename,
         })
-    
+
     return render(request, 'wordsearch.html')
 
 def guide(request):
